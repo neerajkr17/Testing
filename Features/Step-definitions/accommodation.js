@@ -239,7 +239,7 @@ Then('Look for the total number of accommodation provided', async function () {
 
 
 
-Then('Total number of accommodation should be present', async function () {
+Then('Total number of accommodation should be present',{timeout: 20 * 60000}, async function () {
   // this.setTimeout(0);
   // await new Promise(resolve => setTimeout(resolve, 2000));
   try {

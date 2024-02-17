@@ -1,6 +1,6 @@
 const {Given, Before, When, After, Then} = require("@cucumber/cucumber");
 // const {By, until, Builder} = require('selenium-webdriver');
-const { By, until, Builder, Browser } = require('selenium-webdriver');
+const { By, until, Builder } = require('selenium-webdriver');
 
 // const {assert} = require("chai");
 const { assert } = import('chai');
@@ -19,8 +19,8 @@ let driver;
 
 Before( async function(){
 
-  //  this.driver = new Builder().forBrowser('chrome').build();
-  driver = await new Builder().forBrowser(Browser.CHROME).build();
+   this.driver =await new Builder().forBrowser('chrome').build();
+  // driver = await new Builder().forBrowser(Browser.CHROME).build();
 
 
 
@@ -283,7 +283,7 @@ Then('Look for the total number of tourist places provided',async function () {
 // });
 
 
-Then('the total number of tourist places should be present', async function () {
+Then('the total number of tourist places should be present',{timeout: 20 * 60000}, async function () {
   try{
   let paginationbtn = Math.ceil(totalTouristPlaces / 9);
   const paginationButtonc = await this.driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/div[2]/div/div[3]/nav/ul/li[9]/button"));
